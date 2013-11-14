@@ -34,6 +34,8 @@ the dependencies and boot up the Flynn services:
 vagrant ssh
 
 make
+sudo forego start
+make nodejs-example
 ```
 
 ### Usage
@@ -44,7 +46,7 @@ application:
 ```text
 vagrant ssh
 
-cd nodejs-example
+cd /vagrant/nodejs-example
 
 git push flynn master
 ```
