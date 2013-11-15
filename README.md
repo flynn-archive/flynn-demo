@@ -25,8 +25,13 @@ the dependencies and boot up the Flynn services:
 
 ```text
 vagrant ssh
-
+cd /vagrant
+```
+If you do not see the code in /vagrant, check it out and continue - all installation must be done as `vagrant` and inside of `/vagrant`.
+```
 make
+sudo forego start
+make nodejs-example
 ```
 
 ### Usage
@@ -37,7 +42,7 @@ application:
 ```text
 vagrant ssh
 
-cd nodejs-example
+cd /vagrant/nodejs-example
 
 git push flynn master
 ```
