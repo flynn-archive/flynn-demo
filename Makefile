@@ -1,4 +1,4 @@
-DOCKER=docker -H 127.0.0.1
+DOCKER=docker -H=unix:///var/run/docker.sock
 
 run: all
 	bin/forego start
