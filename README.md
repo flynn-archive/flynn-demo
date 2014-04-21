@@ -27,7 +27,7 @@ With the Flynn running and the `flynn` tool installed, the first thing you'll
 want to do is add your SSH key so that you can deploy applications:
 
 ```text
-flynn key-add
+flynn key-add ~/.ssh/id_dsa.pub
 ```
 
 After adding your ssh key, you can deploy a new application:
