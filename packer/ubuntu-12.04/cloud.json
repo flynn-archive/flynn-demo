@@ -1,0 +1,61 @@
+{
+    "builders": [
+        {
+            "type": "digitalocean",
+            "image_id": 3101045,
+            "region_id": 4,
+            "size_id": 62,
+            "snapshot_name": "flynn-target-ubuntu-{{timestamp}}"
+        },
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key` }}",
+            "region": "us-east-1",
+            "source_ami": "ami-53b1ff3a",
+            "instance_type": "m1.small",
+            "ssh_username": "ubuntu",
+            "ami_name": "flynn-target-ubuntu-{{timestamp}}"
+        },
+        {
+            "type": "qemu",
+            "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.4-server-amd64.iso",
+            "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
+            "iso_checksum_type": "md5",
+            "ssh_wait_timeout": "30s",
+            "shutdown_command": "shutdown -P now",
+            "disk_size": 5000,
+            "format": "qcow2",
+            "headless": false,
+            "accelerator": "kvm",
+            "http_directory": "http",
+            "http_port_min": 10082,
+            "http_port_max": 10089,
+            "ssh_host_port_min": 2222,
+            "ssh_host_port_max": 2229,
+            "ssh_username": "root",
+            "ssh_password": "jps2365",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "90m",
+            "vm_name": "tdhtest",
+            "net_device": "virtio-net",
+            "disk_interface": "virtio",
+            "boot_command":
+            [
+                "",
+                " ks=http://10.0.2.2:{{ .HTTPPort }}/preseed.cfg"
+            ]
+        }
+    ],
+
+    "provisioners": [
+        {
+            "scripts": [
+                "scripts/upgrade.sh",
+                "scripts/cloud.sh",
+                "scripts/docker.sh"
+            ],
+            "type": "shell"
+        }
+    ]
+}
