@@ -19,8 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.provision "shell", inline: <<SCRIPT
-    apt-get update
-    sudo apt-get install -y lxc-docker
+    curl -s https://get.docker.io/ubuntu/ | sudo sh
 
     docker run -d -v=/var/run/docker.sock:/var/run/docker.sock -p=1113:1113 flynn/host -external 10.0.2.15 -force
     docker pull flynn/postgres
