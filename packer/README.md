@@ -2,13 +2,13 @@
 
 This repository contains Packer templates for building machine images
 that represent the expected Ubuntu target system for Flynn. This is essentially
-a stock image of Ubuntu 12.04 that is Docker-ready, which involves upgrading the
+a stock image of Ubuntu 14.04 that is Docker-ready, which involves upgrading the
 kernel and adding the Docker package repos.
 
 ## Usage
 
 First, [install Packer](http://www.packer.io/intro/getting-started/setup.html).
-Then, clone this repository and `cd` into the `ubuntu-12.04` target directory.
+Then, clone this repository and `cd` into the `ubuntu-14.04` target directory.
 You can now either build a cloud image with the `cloud.json` or build a Vagrant
 box with `vagrant.json`.
 
